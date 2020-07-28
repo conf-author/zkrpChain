@@ -26,14 +26,14 @@ type VerifyProofs_ArbitraryRange struct{}
 
 func (t *VerifyProofs_ArbitraryRange) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
-    return shim.Success([]byte("Success invoke and not opter!!"))
+	return shim.Success([]byte("Success invoke and not opter!!"))
 
 }
 
 
 func (t *VerifyProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
         
-    _, args := stub.GetFunctionAndParameters()
+	_, args := stub.GetFunctionAndParameters()
 	keyid := args[0]  
 
 	//Verify that the range are correct or not modified
@@ -45,14 +45,14 @@ func (t *VerifyProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) p
 	valuerange_parm := []string{"invoke","get_proof",keyid}
 	queryArgs := make([][]byte ,len(valuerange_parm))
 	for i,arg := range valuerange_parm{
-			queryArgs[i] = []byte(arg)
+		queryArgs[i] = []byte(arg)
 	}
 
 	//invoke GenProofs_ArbitraryRange chaincode
 	response := stub.InvokeChaincode("GenProofs_ArbitraryRange",queryArgs,"vegetableschannel") 
 	if response.Status != shim.OK {
-			errStr := fmt.Sprintf("failed to query chaincode.got error :%s",response.Payload)
-			return shim.Error(errStr)
+		errStr := fmt.Sprintf("failed to query chaincode.got error :%s",response.Payload)
+		return shim.Error(errStr)
 	}
 
 	result := string(response.Payload)
@@ -87,12 +87,12 @@ func (t *VerifyProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) p
 	
 	VecLength,err := strconv.Atoi(values[1])                
 	if err != nil {
-			return shim.Error("VecLength strconv operation is error")
+		return shim.Error("VecLength strconv operation is error")
 	}
 	
 	m,err := strconv.Atoi(values[2])                
 	if err != nil {
-			return shim.Error("strconv Atoi is error")
+		return shim.Error("strconv Atoi is error")
 	}
 
 	EC := mbp.NewECPrimeGroupKey(VecLength*2*m)
@@ -100,7 +100,7 @@ func (t *VerifyProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) p
 	var proof mbp.MultiRangeProof
 	err = json.Unmarshal([]byte(values[3]), &proof)
 	if err != nil {
-			return shim.Error(err.Error())
+		return shim.Error(err.Error())
 	}
 
 	// Verify the arbitrary range proof
