@@ -1,4 +1,3 @@
-
 var co = require('co');
 var path = require('path');
 var fs = require('fs');
@@ -20,10 +19,8 @@ var channel = client.newChannel('vegetableschannel');
 var order = client.newOrderer('grpc://172.16.174.45:7050');
 channel.addOrderer(order);
 
-
 var peer = client.newPeer('grpc://172.16.174.45:7051'); //peer0.org1
 channel.addPeer(peer);
-
 
 var peer1 = client.newPeer('grpc://172.16.174.46:7051'); //per0.org2
 channel.addPeer(peer1);
@@ -35,24 +32,30 @@ using VerifyProofs_ArbitraryRange/VerifyProofs_StandardRange chaincode.
 */
 var queryCc = function(chaincodeid,func,chaincode_args){
 
-   return getOrgAdmin4Local().then( (user)=> {
+	return getOrgAdmin4Local().then( (user)=> {
 
-        tx_id = client.newTransactionID();
-        var request = {
+		tx_id = client.newTransactionID();
+		var request = {
 			chaincodeId: chaincodeid,
 			txId: tx_id,
 			fcn: func,
 			args:chaincode_args
 
-        };
-        return channel.queryByChaincode(request,peer1);
-
+		};
+		
+		return channel.queryByChaincode(request,peer1);
 	},(err)=>{
-        console.log('error',e);
+		
+		console.log('error',e);
+		
 	}).then( (sendtransresult) => {
-        return sendtransresult;
+		
+		return sendtransresult;
+		
 	},(err)=>{
-        console.log('error',e);
+		
+		console.log('error',e);
+		
 	});
 }
 
@@ -62,32 +65,31 @@ The prover uses this function when generating arbitrary/standard range proof usi
 */
 var sendTransaction = function(chaincodeid,func,chaincode_args){
 
-   var tx_id = null;
-   return getOrgAdmin4Local().then( (user)=> {
+	var tx_id = null;
+   	return getOrgAdmin4Local().then( (user)=> {
 
-        tx_id = client.newTransactionID();
-        var request = {
-			chaincodeId: chaincodeid,
-			fcn: func,
-			args:chaincode_args,
-			chainId: "vegetableschannel",
-			txId: tx_id
+        	tx_id = client.newTransactionID();
+		var request = {
+				chaincodeId: chaincodeid,
+				fcn: func,
+				args:chaincode_args,
+				chainId: "vegetableschannel",
+				txId: tx_id
 
-        };
-        return channel.sendTransactionProposal(request);
+		};
+        	return channel.sendTransactionProposal(request);
+	},(err)=>{
 
-   },(err)=>{
+        	console.log('error',e);
+	}).then( (chaincodeinvokeresult) => {
 
-        console.log('error',e);
+		var proposalResponses = chaincodeinvokeresult[0];
+		var proposal = chaincodeinvokeresult[1];
+		var header = chaincodeinvokeresult[2];
+		var all_good = true;
 
-   }).then( (chaincodeinvokeresult) => {
-
-        var proposalResponses = chaincodeinvokeresult[0];
-        var proposal = chaincodeinvokeresult[1];
-        var header = chaincodeinvokeresult[2];
-        var all_good = true;
-
-        for (var i in proposalResponses){
+		for (var i in proposalResponses){
+			
 			let one_good = false;
 			if(proposalResponses && proposalResponses[0].response && proposalResponses[0].response.status === 200){
 					one_good = true;
@@ -98,15 +100,11 @@ var sendTransaction = function(chaincodeid,func,chaincode_args){
 
 			all_good = all_good & one_good;
 
-        }
-
-        if(all_good){
-			console.info(util.format(
-					'Successfully :Status - %s,message - "%s",metadata - "%s",endorsement signature :%s',
-					proposalResponses[0].response.status,
-					proposalResponses[0].response.message,
-					proposalResponses[0].response.payload,
-					proposalResponses[0].endorsement.signature));
+		}
+		
+		if(all_good){
+			console.info(util.format('Successfully :Status - %s,message - "%s",metadata - "%s",endorsement signature :%s',proposalResponses[0].response.status,
+proposalResponses[0].response.message,proposalResponses[0].response.payload,proposalResponses[0].endorsement.signature));
 
 			var request = {
 					proposalResponses:proposalResponses,
@@ -116,15 +114,17 @@ var sendTransaction = function(chaincodeid,func,chaincode_args){
 
 			var transactionID = tx_id.getTransactionID();
 			return channel.sendTransaction(request);
-        }
+		}
 
-   },(err)=>{
-        console.log('error',e);
-   }).then( (sendtransresult) => {
-        return sendtransresult;
-   },(err)=>{
-        console.log('error',e);
-   });
+	},(err)=>{
+		console.log('error',e);
+	}).then( (sendtransresult) => {
+		
+		return sendtransresult;
+		
+	},(err)=>{
+		console.log('error',e);
+	});
 }
 
 /*
@@ -161,7 +161,7 @@ function getOrgAdmin4Local() {
 	var certPEM = readAllFiles(certPath)[0].toString();
 
 	return hfc.newDefaultKeyValueStore({
-			path:tempdir
+		path:tempdir
 	}).then((store) => {
 		client.setStateStore(store);
 
