@@ -2,15 +2,15 @@ package main
 
 import (
 
-  "fmt"
-  "strings"
-  "strconv"
-  "encoding/json"
-  "github.com/hyperledger/fabric/core/chaincode/shim"
-  pb "github.com/hyperledger/fabric/protos/peer"
-  "math/big"
-  "mbp"
-  "bytes"
+	"fmt"
+	"strings"
+	"strconv"
+	"encoding/json"
+	"github.com/hyperledger/fabric/core/chaincode/shim"
+	pb "github.com/hyperledger/fabric/protos/peer"
+	"math/big"
+	"mbp"
+	"bytes"
     
 )
 
@@ -18,8 +18,7 @@ import (
 type GenProofs_ArbitraryRange struct{}
 
 func (t *GenProofs_ArbitraryRange) Init(stub shim.ChaincodeStubInterface) pb.Response {
-
-    return shim.Success([]byte("Success invoke and not opter!!"))
+	return shim.Success([]byte("Success invoke and not opter!!"))
 }
 
 func (t *GenProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
@@ -72,7 +71,7 @@ func (t *GenProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.R
 		// process VecLength: 8bit 16bit 32bit 64bit
 		VecLength,err := strconv.Atoi(args[3]) 
 		if err != nil {
-				return shim.Error("VecLength strconv operation is error")
+			return shim.Error("VecLength strconv operation is error")
 		}
 		
 		//m represents the number of secret values
@@ -87,7 +86,7 @@ func (t *GenProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.R
 
 			secretvalues, err = strconv.ParseUint(args[i+4], 10, 64)
 			if err != nil {
-					return shim.Error("Secretvalues strconv operation is error")
+				return shim.Error("Secretvalues strconv operation is error")
 			}
 			
 			v_bigInt := new(big.Int).SetUint64(secretvalues)
@@ -110,7 +109,7 @@ func (t *GenProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.R
 			
 		proofJSONasBytes, err1 := json.Marshal(proof)
 		if err1 != nil {
-				return shim.Error(err1.Error())
+			return shim.Error(err1.Error())
 		}
 
 		//upload the rangeid, VecLength, the number of secret values, proof together into the blockchain
@@ -118,7 +117,7 @@ func (t *GenProofs_ArbitraryRange) Invoke(stub shim.ChaincodeStubInterface) pb.R
 
 		err1 = stub.PutState(keyid, bytes.Join(bytes0,[]byte("---")))
 		if err1 != nil {
-				 return shim.Error(err1.Error())
+			return shim.Error(err1.Error())
 		}
 
 		return shim.Success([]byte("Successfully generate multi range proof !"))
