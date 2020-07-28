@@ -17,7 +17,7 @@ type GenProofs_StandardRange struct{}
 
 func (t *GenProofs_StandardRange) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
-    return shim.Success([]byte("success invoke and not opter!!"))
+	return shim.Success([]byte("success invoke and not opter!!"))
 }
 
 func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
@@ -31,7 +31,7 @@ func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Re
 	    // process VecLength: 8bit 16bit 32bit 64bit
 		VecLength, err := strconv.Atoi(args[2])
 		if err != nil {
-				return shim.Error("VecLength strconv operation is error")
+			return shim.Error("VecLength strconv operation is error")
 		}
 
 		//m represents the number of secret values
@@ -46,7 +46,7 @@ func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Re
 
 			secretvalues, err = strconv.ParseUint(args[i+3], 10, 64)
 			if err != nil {
-					return shim.Error("secretvalues strconv ParseInt is error")
+				return shim.Error("secretvalues strconv ParseInt is error")
 			}
 			
 			v_bigInt := new(big.Int).SetUint64(secretvalues)
@@ -59,7 +59,7 @@ func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Re
 
 		proofJSONasBytes, err1 := json.Marshal(proof)
 		if err1 != nil {
-				return shim.Error(err1.Error())
+			return shim.Error(err1.Error())
 		}
 
 		// upload VecLength, the number of secret values, proof together into the blockchain
@@ -67,7 +67,7 @@ func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Re
 
 		err1 = stub.PutState(keyid, bytes.Join(bytes0,[]byte("---")))
 		if err1 != nil {
-				 return shim.Error(err1.Error())
+			return shim.Error(err1.Error())
 		}
 
 		return shim.Success([]byte("Successfully generate multi range proof !"))
@@ -76,7 +76,7 @@ func (t *GenProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb.Re
 
 		keyproof,err := stub.GetState(keyid)
 		if(err != nil) {
-				return shim.Error(err.Error())
+			return shim.Error(err.Error())
 		}
 
 		return shim.Success(keyproof)
