@@ -18,7 +18,7 @@ type VerifyProofs_StandardRange struct{}
 
 func (t *VerifyProofs_StandardRange) Init(stub shim.ChaincodeStubInterface) pb.Response {
 
-    return shim.Success([]byte("Success invoke and not opter!!"))
+	return shim.Success([]byte("Success invoke and not opter!!"))
 
 }
 
@@ -38,8 +38,8 @@ func (t *VerifyProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb
 	//invoke GenProofs_StandardRange chaincode
 	response := stub.InvokeChaincode("GenProofs_StandardRange",queryArgs,"vegetableschannel") 
 	if response.Status != shim.OK {
-			errStr := fmt.Sprintf("failed to query chaincode.got error :%s",response.Payload)
-			return shim.Error(errStr)
+		errStr := fmt.Sprintf("failed to query chaincode.got error :%s",response.Payload)
+		return shim.Error(errStr)
 	}
 
 	result := string(response.Payload)
@@ -47,12 +47,12 @@ func (t *VerifyProofs_StandardRange) Invoke(stub shim.ChaincodeStubInterface) pb
 
 	VecLength,err := strconv.Atoi(values[0])                
 	if err != nil {
-			return shim.Error("VecLength strconv operation is error")
+		return shim.Error("VecLength strconv operation is error")
 	}
 
 	m,err := strconv.Atoi(values[1])                
 	if err != nil {
-			return shim.Error("strconv Atoi is error")
+		return shim.Error("strconv Atoi is error")
 	}
 
 	EC := mbp.NewECPrimeGroupKey(VecLength*m)
@@ -81,7 +81,7 @@ func main() {
 
 	err1 := shim.Start(new(VerifyProofs_StandardRange))
 	if err1 != nil {
-			fmt.Printf("error starting simple chaincode:%s\n", err1)
+		fmt.Printf("error starting simple chaincode:%s\n", err1)
 	}
 
 }
