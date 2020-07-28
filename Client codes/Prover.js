@@ -11,6 +11,7 @@ var cc_gen_standard = "GenProofs_StandardRange";
 Get the datas which is used to generate range proof from the mysql database 
 */
 var data = function getv(){
+	
 	var promise = new Promise(function (resolve, reject) {
 		var mysql = require('mysql');
 		var connection = mysql.createConnection({
@@ -75,10 +76,8 @@ app.get('/GenProofs_ArbitraryRange',function(req,res){
         co(function *(){
             
 		var result = yield fabricservice.sendTransaction(cc_gen_arbitrary,"invoke",invokeArgs);
-
-		for(let i=0; i < result.length; i++){
-			res.send( result[i].toString('utf8'));
-		}
+		res.send(result);
+		
         }).catch((err) => {
 		
         	res.send(err);
@@ -116,7 +115,6 @@ app.get('/GenProofs_StandardRange',function(req,res){
             
 		var result = yield fabricservice.sendTransaction(cc_gen_standard,"invoke",invokeArgs);
 		res.send(result);
-		console.info( JSON.stringify(result));
             
         }).catch((err) => {
          	res.send(err);
