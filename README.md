@@ -8,4 +8,5 @@ Besides the 5 main chaincodes, client codes are also developed to show how to in
 Additionally, Prover.js is also responsible for retrieving the private data from off-chain database, which is MySQL and the related database file is project_VegetablesInfo.sql.
 
 [1] B. Bnz, J. Bootle, D. Boneh, A. Poelstra, P. Wuille, and G. Maxwell, “Bulletproofs: Short proofs for confidential transactions and more,” in Proc. IEEE S&P, San Francisco, CA, USA, 2018, pp. 315–334.
+
 [2] Hyperledger. Hyperledger Fabric home. Accessed: Jul. 25, 2020. [Online]. Available: https://www.hyperledger.org/use/fabric.
