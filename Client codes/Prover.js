@@ -16,10 +16,10 @@ var data = function getv(){
 	var promise = new Promise(function (resolve, reject) {
 		var mysql = require('mysql');
 		var connection = mysql.createConnection({
-			host: '',
-			user: '',
-			password: '',
-			database: ''
+			host: '',      //
+			user: '',      //
+			password: '',  //
+			database: ''   //
 		});
 		connection.connect();
 		connection.query(
