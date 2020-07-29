@@ -12,13 +12,14 @@ Get the datas which is used to generate range proof from the mysql database
 */
 var data = function getv(){
 	
+	// connect database
 	var promise = new Promise(function (resolve, reject) {
 		var mysql = require('mysql');
 		var connection = mysql.createConnection({
-			host: 'localhost',
-			user: 'root',
-			password: 'woDALguan96&09%11#',
-			database: 'project'
+			host: '',
+			user: '',
+			password: '',
+			database: ''
 		});
 		connection.connect();
 		connection.query(
