@@ -129,11 +129,11 @@ app.get('/GetMPCRangePrf_StandardRange',function(req,res){
 	var orgname = req.query.orgname;
 
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_MPC_Range_Prf",[keyid], uname, orgname);
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_MPC_Range_Prf",[keyid], uname, orgname);
 		var result = ''
-        for(let i=0; i < chaincodequeryresult.length; i++){
-            result += chaincodequeryresult[i].toString('utf8')
-        }
+		for(let i=0; i < chaincodequeryresult.length; i++){
+		    result += chaincodequeryresult[i].toString('utf8')
+		}
 
 		res.send(result)
 
@@ -150,14 +150,12 @@ app.get('/GetMPCRangePrf_ArbitraryRange',function(req,res){
 	var orgname = req.query.orgname;
 
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_MPC_Range_Prf",[keyid], uname, orgname);
-
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_MPC_Range_Prf",[keyid], uname, orgname);
 		var result = ''
-
-        for(let i=0; i < chaincodequeryresult.length; i++){
-            result += chaincodequeryresult[i].toString('utf8')
-        }
-
+		for(let i=0; i < chaincodequeryresult.length; i++){
+		    result += chaincodequeryresult[i].toString('utf8')
+		}
 		res.send(result)
 
     }).catch((err) => {
@@ -173,14 +171,12 @@ app.get('/GetRangeHistory_StandardRange',function(req,res){
 	var orgname = req.query.orgname;
 
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_Range_History",[keyid], uname, orgname);
-
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_Range_History",[keyid], uname, orgname);
 		var result = ''
-
-        for(let i=0; i < chaincodequeryresult.length; i++){
-            result += chaincodequeryresult[i].toString('utf8')
-        }
-
+		for(let i=0; i < chaincodequeryresult.length; i++){
+		    result += chaincodequeryresult[i].toString('utf8')
+		}
 		res.send(result)
 
     }).catch((err) => {
@@ -195,14 +191,12 @@ app.get('/GetRangeHistory_ArbitraryRange',function(req,res){
 	var orgname = req.query.orgname;
 
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_Range_History",[keyid], uname, orgname);
-
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_Range_History",[keyid], uname, orgname);
 		var result = ''
-
-        for(let i=0; i < chaincodequeryresult.length; i++){
-            result += chaincodequeryresult[i].toString('utf8')
-        }
-
+		for(let i=0; i < chaincodequeryresult.length; i++){
+		    result += chaincodequeryresult[i].toString('utf8')
+		}
 		res.send(result)
 
     }).catch((err) => {
