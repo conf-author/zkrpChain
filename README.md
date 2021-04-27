@@ -16,6 +16,8 @@ The part consists of 6 chaincodes, namely `Prover.go`, `Arb_Prover.go`, `Dealer.
 Similarly, in this part, it also has 4 lient codes, namely `Prover.js`, `Dealer.js`, `Verifier.js` and `Service.js`. The function of client codes about the multiple-proves-to-one -verifier is the same as that about the one-prover-to-one-verifier. 
 
 
+Reference
+----------
 [1] B. Bnz, J. Bootle, D. Boneh, A. Poelstra, P. Wuille, and G. Maxwell, “Bulletproofs: Short proofs for confidential transactions and more,” in Proc. IEEE S&P, San Francisco, CA, USA, 2018, pp. 315–334.
 
 [2] Hyperledger. Hyperledger Fabric home. Accessed: Jul. 25, 2020. [Online]. Available: https://www.hyperledger.org/use/fabric.
