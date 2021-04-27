@@ -32,7 +32,7 @@ app.get('/GenV_AandS_StandardRange', function(req,res){
 app.get('/GenV_AandS_ArbitraryRange', function(req,res){
   
 	var data = req.query.data;
-    var invokeArgs = [data];
+    	var invokeArgs = [data];
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
 	var id = req.query.id;
@@ -55,7 +55,7 @@ app.get('/GenT1andT2_StandardRange', function(req,res){
 
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-    var id = req.query.id;
+    	var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
@@ -79,7 +79,7 @@ app.get('/GenT1andT2_ArbitraryRange', function(req,res){
 
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-    var id = req.query.id;
+   	var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
@@ -100,9 +100,9 @@ app.get('/GenT1andT2_ArbitraryRange', function(req,res){
 
 app.get('/GenOtherShare_StandardRange', function(req,res){
 
-    var uname = req.query.uname;
+    	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-    var id = req.query.id;
+    	var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
@@ -124,7 +124,7 @@ app.get('/GenOtherShare_StandardRange', function(req,res){
 app.get('/GenOtherShare_ArbitraryRange', function(req,res){
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-    var id = req.query.id;
+    	var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
@@ -150,12 +150,12 @@ app.get('/GetCurState_StandardRange', function(req,res){
 	var orgname = req.query.orgname;
 	
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0], "Get_Cur_State", [keyid], uname, orgname);
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0], "Get_Cur_State", [keyid], uname, orgname);
 		var result = ''
 		for(let i=0; i < chaincodequeryresult.length; i++){
 		    result += chaincodequeryresult[i].toString('utf8')
 		}
-
 		res.send(result)
 
     }).catch((err) => {
@@ -166,18 +166,17 @@ app.get('/GetCurState_StandardRange', function(req,res){
 
 app.get('/GetCurState_ArbitraryRange', function(req,res){
 	
-    var keyid = req.query.keyid;
+    	var keyid = req.query.keyid;
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
 	
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1], "Get_Cur_State", [keyid], uname, orgname);
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1], "Get_Cur_State", [keyid], uname, orgname);
 		var result = ''
-
 		for(let i=0; i < chaincodequeryresult.length; i++){
 		    result += chaincodequeryresult[i].toString('utf8')
 		}
-
 		res.send(result)
 
     }).catch((err) => {
@@ -193,12 +192,12 @@ app.get('GetStateHistory_StandardRange', function(req,res){
 	var orgname = req.query.orgname;
 	
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0], "Get_State_History", [keyid], uname, orgname);
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0], "Get_State_History", [keyid], uname, orgname);
 		var result = ''
 		for(let i=0; i < chaincodequeryresult.length; i++){
 		    result += chaincodequeryresult[i].toString('utf8')
 		}
-
 		res.send(result)
 
     }).catch((err) => {
@@ -213,7 +212,8 @@ app.get('/GetStateHistory_ArbitraryRange', function(req,res){
 	var orgname = req.query.orgname;
 	
 	co(function *(){
-        var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1], "Get_State_History", [keyid], uname, orgname);
+		
+        	var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1], "Get_State_History", [keyid], uname, orgname);
 		var result = ''
 		for(let i=0; i < chaincodequeryresult.length; i++){
 		    result += chaincodequeryresult[i].toString('utf8')
