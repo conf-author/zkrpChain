@@ -15,7 +15,7 @@ The part consists of 6 chaincodes, namely `Prover.go`, `Arb_Prover.go`, `Dealer.
 
 Similarly, in this part, it also has 4 client codes, namely `Prover.js`, `Dealer.js`, `Verifier.js` and `Service.js`. The function of client codes about the multiple-provers-to-one-verifier is the same as that about the one-prover-to-one-verifier. And the usage process of the client codes is as follows:
 
-1.  Setup the client codes. 
+1. Setup the client codes. 
 ```
 node Prover.js 
 node Dealer.js
@@ -24,7 +24,7 @@ node Verifier.js
 
 2. Open the browser and input the URL. For example: http://localhost:3000?VerPrf_StandardRange.
 
-3. Enter and start to invoke the corresponding function. In the above URL, the client codes will invoke the `Service.js APIs` to operate `Verifier chaincode` to verify the stardard-range proofs.
+3. Enter and start to invoke the corresponding function. In the above URL, the client code `Verifier.js` will invoke the `Service.js API` to operate the `Verifier chaincode` to verify the stardard-range proofs.
 
 References
 ----------
