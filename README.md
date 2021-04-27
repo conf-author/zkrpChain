@@ -24,7 +24,7 @@ node Verifier.js
 2.Open the browser and input the URL. For example: http://localhost:3000?VerPrf_StandardRange
 3.Enter and invoke the corresponding function. In the above URL,the client codes will invoke the `Service.js APIs` to operate `Verifier chaincode` to verify the stardard-range proofs.
 
-Reference
+References
 ----------
 [1] B. Bnz, J. Bootle, D. Boneh, A. Poelstra, P. Wuille, and G. Maxwell, “Bulletproofs: Short proofs for confidential transactions and more,” in Proc. IEEE S&P, San Francisco, CA, USA, 2018, pp. 315–334.
 
