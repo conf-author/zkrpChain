@@ -1,5 +1,5 @@
 # zkrpChain
-ZkrpChain, which integrates Bulletproofs [1] and Hyperledger Fabric [2] in a weak-coupling way, is a privacy-preserving data auditing solution for consortium blockchains. It allows the verifier peer to conduct privacy-preserving data auditing and verify the zero-knowledge range proofs, which the prover peer generates from its off-chain private data, mainly based on the chaincodes and on-chain data of Hyperledger Fabric. This project is based on Hyperledger Fabric v1.1.0
+ZkrpChain, which integrates Bulletproofs [1] and Hyperledger Fabric [2] in a weak-coupling way, is a privacy-preserving data auditing solution for consortium blockchains. It allows the verifier peer to conduct privacy-preserving data auditing and verify the zero-knowledge range proofs, which the prover peer generates from its off-chain private data, mainly based on the chaincodes and on-chain data of Hyperledger Fabric. This project is based on Hyperledger Fabric v1.1.0.
 
 About the one-prover-to-one-verifier scenario
 ----------
