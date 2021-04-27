@@ -15,7 +15,7 @@ The part consists of 6 chaincodes, namely `Prover.go`, `Arb_Prover.go`, `Dealer.
 
 Similarly, in this part, it also has 4 client codes, namely `Prover.js`, `Dealer.js`, `Verifier.js` and `Service.js`. The function of client codes about the multiple-provers-to-one-verifier is the same as that about the one-prover-to-one-verifier. And the usage process of the client codes is as follows:
 
-1. Setup the client codes. 
+1.  Setup the client codes. 
 ```
 node Prover.js 
 node Dealer.js
