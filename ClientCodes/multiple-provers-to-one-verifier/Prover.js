@@ -13,21 +13,21 @@ app.get('/GenV_AandS_StandardRange',function(req,res){
 
   
 	var data = req.query.data;
-        var invokeArgs = [data];
+    var invokeArgs = [data];
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
 	var id = req.query.id;
 
-        co(function *(){
-            
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"V_A_and_S",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+	co(function *(){
+		
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"V_A_and_S",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
@@ -36,21 +36,21 @@ app.get('/GenV_AandS_ArbitraryRange',function(req,res){
 
   
 	var data = req.query.data;
-        var invokeArgs = [data];
+    var invokeArgs = [data];
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
 	var id = req.query.id;
 
-        co(function *(){
-            
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"V_A_and_S",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+	co(function *(){
+		
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"V_A_and_S",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
@@ -59,23 +59,23 @@ app.get('/GenT1andT2_StandardRange',function(req,res){
 
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-        var id = req.query.id;
+    var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
 	//console.log(data.toString())
 	
-        co(function *(){
-            
+	co(function *(){
+		
 
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"T1_and_T2",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"T1_and_T2",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
@@ -84,87 +84,90 @@ app.get('/GenT1andT2_ArbitraryRange',function(req,res){
 
 	var uname = req.query.uname;
 	var orgname = req.query.orgname;
-        var id = req.query.id;
+    var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
 	
-        co(function *(){
-            
+	co(function *(){
+		
 
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"T1_and_T2",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"T1_and_T2",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
 
 app.get('/GenOtherShare_StandardRange',function(req,res){
 
-        var uname = req.query.uname;
+    var uname = req.query.uname;
 	var orgname = req.query.orgname;
-        var id = req.query.id;
+    var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
 	
-        co(function *(){
-            
+	co(function *(){
+		
 
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"OtherShare",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[0],"OtherShare",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
 
 app.get('/GenOtherShare_ArbitraryRange',function(req,res){
 
-        var uname = req.query.uname;
+    var uname = req.query.uname;
 	var orgname = req.query.orgname;
-        var id = req.query.id;
+    var id = req.query.id;
 	var fsname = "GEN_PROVER_" + id + ".txt";
 	var data = fs.readFileSync(fsname);
 	var invokeArgs = [data.toString()];
 	
-        co(function *(){
-            
+	co(function *(){
+		
 
-            var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"OtherShare",invokeArgs, uname, orgname, id);
-	    
-            for(let i=0; i < result.length; i++){
-                res.send( result[i].toString('utf8'));
-            }
-        }).catch((err) => {
-            res.send(err);
-        })
+		var result = yield fabricservice.sendTransaction_Prover(chaincode_name[1],"OtherShare",invokeArgs, uname, orgname, id);
+	
+		for(let i=0; i < result.length; i++){
+			res.send( result[i].toString('utf8'));
+		}
+	}).catch((err) => {
+		res.send(err);
+	})
 
 });
 
 
 app.get('/GetCurState_StandardRange',function(req,res){
-
   
 	var keyid = req.query.keyid;
+	var uname = req.query.uname;
+	var orgname = req.query.orgname;
+	
+	co(function *(){
         var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_Cur_State",[keyid]);
 
-	var result = ''
+		var result = ''
 
         for(let i=0; i < chaincodequeryresult.length; i++){
             result += chaincodequeryresult[i].toString('utf8')
         }
 
-	res.send(result)
+		es.send(result)
 
     }).catch((err) => {
         res.send(err);
@@ -173,18 +176,20 @@ app.get('/GetCurState_StandardRange',function(req,res){
 
 
 app.get('/GetCurState_ArbitraryRange',function(req,res){
-
-  
-	var keyid = req.query.keyid;
+	
+    var keyid = req.query.keyid;
+	var uname = req.query.uname;
+	var orgname = req.query.orgname;
+	
+	co(function *(){
         var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_Cur_State",[keyid]);
-
-	var result = ''
+		var result = ''
 
         for(let i=0; i < chaincodequeryresult.length; i++){
             result += chaincodequeryresult[i].toString('utf8')
         }
 
-	res.send(result)
+		res.send(result)
 
     }).catch((err) => {
         res.send(err);
@@ -194,17 +199,20 @@ app.get('/GetCurState_ArbitraryRange',function(req,res){
 
 app.get('GetStateHistory_StandardRange',function(req,res){
 
-  
 	var keyid = req.query.keyid;
+	var uname = req.query.uname;
+	var orgname = req.query.orgname;
+	
+	co(function *(){
         var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[0],"Get_State_History",[keyid]);
 
-	var result = ''
+		var result = ''
 
         for(let i=0; i < chaincodequeryresult.length; i++){
             result += chaincodequeryresult[i].toString('utf8')
         }
 
-	res.send(result)
+		es.send(result)
 
     }).catch((err) => {
         res.send(err);
@@ -213,17 +221,20 @@ app.get('GetStateHistory_StandardRange',function(req,res){
 
 app.get('/GetStateHistory_ArbitraryRange',function(req,res){
 
-  
 	var keyid = req.query.keyid;
+	var uname = req.query.uname;
+	var orgname = req.query.orgname;
+	
+	co(function *(){
         var chaincodequeryresult = yield fabricservice.queryCc(chaincode_name[1],"Get_State_History",[keyid]);
 
-	var result = ''
+		var result = ''
 
         for(let i=0; i < chaincodequeryresult.length; i++){
             result += chaincodequeryresult[i].toString('utf8')
         }
 
-	res.send(result)
+		res.send(result)
 
     }).catch((err) => {
         res.send(err);
